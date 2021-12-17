@@ -19,10 +19,22 @@ class AddDepartmentView(APIView):
         dept_name = data['dept_name']
         dept_code = data['dept_code']
 
+        # if (Department.objects.get(dept_name=dept_name) != None):
+        #     return Response({
+        #         'status': 'name exists'
+        #     }, status=status.HTTP_200_OK)
+
+        # if (Department.objects.get(dept_code=dept_code) != None):
+        #     return Response({
+        #         'status': 'code exists'
+        #     }, status=status.HTTP_200_OK)
+
         department = Department(dept_name=dept_name, dept_code=dept_code)
         department.save()
 
-        return Response(data, status=status.HTTP_201_CREATED)
+        serializer = DepartmentSerializer(department)
+
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
 
 
 class NumberOfDepartmentView(APIView):
