@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import ChangePasswordView, DeleteEmployeeView, GetAdminsView, GetAssignedNamesView, GetManagersView, GetUserDetailsView, LoginUser, NumberOfEmployees, RegisterEmployeeView, UpdateEmployeeView, AddManagerView
+from .views import ChangePasswordView, DeleteEmployeeView, GetAdminsView, GetAssignedNamesView, GetManagersView, GetUserDetailsByEmpID, GetUserDetailsView, LoginUser, LogoutUser, NumberOfEmployees, RegisterEmployeeView, UpdateEmployeeView, AddManagerView
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView, TokenVerifyView
 
 urlpatterns = [
@@ -9,6 +9,7 @@ urlpatterns = [
     path('delete/<str:pk>', DeleteEmployeeView.as_view()),
     path('number-employees/', NumberOfEmployees.as_view()),
     path('login/', LoginUser.as_view()),
+    path('logout/', LogoutUser.as_view()),
     path('token/', TokenObtainPairView.as_view()),
     path('token/refresh/', TokenRefreshView.as_view()),
     path('token/verify/', TokenVerifyView.as_view()),
@@ -16,5 +17,6 @@ urlpatterns = [
     path('get-admins/', GetAdminsView.as_view()),
     path('get-managers/', GetManagersView.as_view()),
     path('get-user/', GetUserDetailsView.as_view()),
-    path('change-password/', ChangePasswordView.as_view())
+    path('change-password/', ChangePasswordView.as_view()),
+    path('get-user-by-id/<str:empID>/', GetUserDetailsByEmpID.as_view())
 ]

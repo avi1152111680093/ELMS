@@ -22,6 +22,12 @@ class UserDetails(models.Model):
     state = models.TextField(max_length=50, default='')
     manager = models.TextField(max_length=50, default='')
     admin = models.TextField(max_length=50, default='')
+    email = models.EmailField(default='')
+    contract_based = models.BooleanField(default=False)
+    regular_based = models.BooleanField(default=False)
+    leaves_month = models.IntegerField(default=0)
+    leaves_total = models.IntegerField(default=0)
+    disabled = models.BooleanField(default=False)
 
     def __str__(self) -> str:
         return self.username

@@ -21,5 +21,7 @@ urlpatterns = [
     path('dept/', include('department.urls')),
     path('leave-types/', include('leave_types.urls')),
     path('accounts/', include('accounts.urls')),
-    path('leaves/', include('leaves.urls'))
+    path('leaves/', include('leaves.urls')),
+    path('notifications/', include('notifications.urls')),
+    path('msgs/', include('msgs.urls'))
 ]

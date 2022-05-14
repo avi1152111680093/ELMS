@@ -1,6 +1,6 @@
 from typing import Text
 from django.db import models
-from django.db.models.fields import DateField, IntegerField, TextField
+from django.db.models.fields import DateField, DateTimeField, IntegerField, TextField
 from django.db.models.fields.related import OneToOneField
 from accounts.models import UserDetails
 from leave_types.models import LeaveType
@@ -12,7 +12,7 @@ class Leave(models.Model):
     employee = models.ForeignKey(UserDetails, on_delete=models.CASCADE)
     manager = TextField(max_length=50)
     admin = TextField(max_length=50)
-    applied_on = DateField(auto_now_add=True)
+    applied_on = DateTimeField(auto_now_add=True)
     from_date = DateField()
     to_date = DateField()
     number_of_days = IntegerField()
@@ -22,3 +22,4 @@ class Leave(models.Model):
     waiting_approval = models.BooleanField(default=True)
     admin_approved = models.BooleanField(default=False)
     manager_approved = models.BooleanField(default=False)
+    manager_rejected = models.BooleanField(default=False)
